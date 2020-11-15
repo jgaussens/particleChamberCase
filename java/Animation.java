@@ -5,13 +5,10 @@ import java.util.Arrays;
 public class Animation {
 
     private String stringOfParticles; //String sent as input, ex 'LR...R.'
-    //private int size;
-    //private int speed;
+
 
 
     public void setStringOfParticles(String stringOfParticles) {
-
-        //todo: check if string is valid (RL.) and raise exception if not
 
         this.stringOfParticles = stringOfParticles;
     }
@@ -22,7 +19,7 @@ public class Animation {
 
 
 
-    public char[] getNextPosition(int speed) {
+    public char[] getNextPosition(int speed) { //returns what the board will look like after one move
 
         String s = this.stringOfParticles; //we get the input
 
@@ -71,7 +68,7 @@ public class Animation {
     }
 
 
-    public String xPrints(String leftString, String rightString) {
+    public String xPrints(String leftString, String rightString) { //tool function to print the board depending on the 2 splitted versions of the init string
 
         String output = "";
         for (int i = 0; i < leftString.length(); i++) {
@@ -88,16 +85,10 @@ public class Animation {
 
     static void animate(int speed, String init){
 
-       // assert speed >= 1 & speed <= 10;
-        //assert (init.length() >= 1 & init.length() <= 50);
-        //assert init.matches("[RL.]+");
 
-    	//todo: change to assert once working for clearer code
-    	//todo: make function
 
     	if ( (speed >= 1 & speed <= 10) &  (init.length() >= 1 & init.length() <= 50) & (init.matches("[RL.]+")) ) {
 
-        //return "dd";
 
 
     	String leftStr = init.replace('R', '.');
@@ -118,15 +109,12 @@ public class Animation {
         	leftInit = left.getNextPosition(speed);
 
         	leftStr = Arrays.toString(leftInit);
-        	//leftStr = String.join(",", leftInit);
         	leftStr = leftStr.replace("[", "");
         	leftStr = leftStr.replace("]", "");
         	leftStr = leftStr.replace(",", "");
         	leftStr = leftStr.replace(" ", "");
 
 
-
-        	//System.out.println("leftStr: " + leftStr);
 
 
 
@@ -139,8 +127,6 @@ public class Animation {
         	rightStr = rightStr.replace("]", "");
         	rightStr = rightStr.replace(",", "");
         	rightStr = rightStr.replace(" ", "");
-        	//System.out.println("rightStr: " + rightStr);
-
 
 
         	System.out.println(left.xPrints(leftStr, rightStr));
@@ -170,13 +156,9 @@ public class Animation {
         Animation anim1 = new Animation();
 
 
-        //anim1.setStringOfParticles(".RLLRR");
-        //System.out.println(anim1.getStringOfParticles());
-        //System.out.println(anim1.xPrints("LL...", "..RR."));
-        //System.out.println(anim1.getNextPosition(2));
-
         Animation.animate(2, "..R....");
         System.out.println("");
+
         Animation.animate(3, "RR..LRL");
         System.out.println("");
 
@@ -190,8 +172,6 @@ public class Animation {
         System.out.println("");
 
         Animation.animate(1, "LRRL.LR.LRR.R.LRRL.");
-
-        //anim1.animate
 
 
 
